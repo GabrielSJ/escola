@@ -14,7 +14,7 @@ namespace Escola
         {
             modelBuilder.Entity<Aluno>(entity =>
             {
-                entity.ToTable("alunos"); // Use o esquema correto onde sua tabela está localizada.
+                entity.ToTable("alunos");
 
                 entity.Property(e => e.Id).HasColumnName("id");
                 entity.Property(e => e.Nome).IsRequired().HasColumnName("nome");
@@ -24,7 +24,6 @@ namespace Escola
                 entity.Property(e => e.NomeDoProfessor).IsRequired().HasColumnName("nomedoprofessor");
                 entity.Property(e => e.NumeroDaSala).IsRequired().HasColumnName("numerodasala");
 
-                // ... e assim por diante para as outras propriedades/colunas.
             });
         }
     }

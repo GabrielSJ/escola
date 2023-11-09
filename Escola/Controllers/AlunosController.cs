@@ -14,14 +14,12 @@ namespace Escola.Controllers
             _context = context;
         }
 
-        // GET: api/Alunos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
         {
             return await _context.Alunos.ToListAsync();
         }
 
-        // GET: api/Alunos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Aluno>> GetAluno(int id)
         {
@@ -35,7 +33,6 @@ namespace Escola.Controllers
             return aluno;
         }
 
-        // PUT: api/Alunos/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAluno(int id, Aluno aluno)
         {
@@ -52,7 +49,7 @@ namespace Escola.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlunoExists(id))
+                if (!AlunoExiste(id))
                 {
                     return NotFound();
                 }
@@ -65,7 +62,6 @@ namespace Escola.Controllers
             return NoContent();
         }
 
-        // POST: api/Alunos
         [HttpPost]
         public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
         {
@@ -75,7 +71,6 @@ namespace Escola.Controllers
             return CreatedAtAction("GetAluno", new { id = aluno.Id }, aluno);
         }
 
-        // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAluno(int id)
         {
@@ -91,7 +86,7 @@ namespace Escola.Controllers
             return NoContent();
         }
 
-        private bool AlunoExists(int id)
+        private bool AlunoExiste(int id)
         {
             return _context.Alunos.Any(e => e.Id == id);
         }
